@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:5.7
+    container_name: database
+    volumes:
+      - dbdata:/var/lib/mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: root
+      MYSQL_USER: mysqlcrud
+      MYSQL_PASSWORD: mysqlcrud
+
+
+
+volumes:
+  dbdata:
+# this compomse no has it https://thepracticaldeveloper.com/2017/12/11/dockerize-spring-boot/ , but  that exmaple is beautiful because implements scale
