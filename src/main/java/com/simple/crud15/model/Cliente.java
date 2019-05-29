@@ -2,44 +2,44 @@ package com.simple.crud15.model;
 
 import lombok.Data;
 
+import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.*;
-
-import javax.validation.constraints.Size;
-
 @Entity
-@Table(name="clientes")
-@Data  public class Cliente implements Serializable {
+@Table(name = "clientes")
+@Data
+public class Cliente implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-
-    @Size(min=4, max=12, message="el tamaño tiene que estar entre 4 y 12")
-    @Column(nullable=false)
+    @Size(min = 4, max = 12, message = "el tamaño tiene que estar entre 4 y 12")
+    @Column(nullable = false)
     private String nombre;
-
     private String apellido;
+
+
 
     //@Column(nullable=false, unique=true)
     private String email;
-
-    @Column(name="create_at")
+    @Column(name = "create_at")
     @Temporal(TemporalType.DATE)
     private Date createAt;
+
+    public Cliente() {
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     @PrePersist
     public void prePersist() {
         createAt = new Date();
     }
-
-    public Cliente() {
-    }
-
-
 
     public Long getId() {
         return id;
@@ -80,10 +80,4 @@ import javax.validation.constraints.Size;
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
     }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    private static final long serialVersionUID = 1L;
 }

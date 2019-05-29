@@ -16,9 +16,7 @@ import java.util.stream.StreamSupport;
 public class ProductServiceImpl implements IService<Product> {
 
     @Autowired
-    Productrepository productRepository ;
-
-
+    Productrepository productRepository;
 
 
     @Override
@@ -31,7 +29,6 @@ public class ProductServiceImpl implements IService<Product> {
     }
 
 
-
     @Override
     public Product save(Product object) {
         return this.productRepository.save(object);
@@ -39,7 +36,7 @@ public class ProductServiceImpl implements IService<Product> {
 
     @Override
     public Optional<Product> findOne(Long id) {
-        return Optional.of(this.productRepository.findOne(id)) ;
+        return Optional.of(this.productRepository.findOne(id));
     }
 
     @Override

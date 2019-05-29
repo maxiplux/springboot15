@@ -4,7 +4,10 @@ package com.simple.crud15.model;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -26,10 +29,6 @@ public class Product implements Serializable {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     Date dateSupplied;
-
-
-
-
 
 
     @Id

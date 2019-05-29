@@ -1,0 +1,134 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ProductServiceImpl</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.simple.crud15.services</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ProductServiceImpl (com.simple.crud15.services)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ProductServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/ 8)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.simple.crud15.services;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.simple.crud15.model.Product;
+<i>4</i>&nbsp;import com.simple.crud15.repository.Productrepository;
+<i>5</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>6</i>&nbsp;import org.springframework.stereotype.Service;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;import java.util.List;
+<i>9</i>&nbsp;import java.util.Optional;
+<i>10</i>&nbsp;import java.util.Spliterator;
+<i>11</i>&nbsp;import java.util.Spliterators;
+<i>12</i>&nbsp;import java.util.stream.Collectors;
+<i>13</i>&nbsp;import java.util.stream.StreamSupport;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;@Service(&quot;productService&quot;)
+<b class="fc"><i>16</i>&nbsp;public class ProductServiceImpl implements IService&lt;Product&gt; {</b>
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    @Autowired
+<i>19</i>&nbsp;    Productrepository productRepository ;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    @Override
+<i>25</i>&nbsp;    public List&lt;Product&gt; findAll() {
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;
+<b class="fc"><i>28</i>&nbsp;        return StreamSupport.stream(</b>
+<b class="fc"><i>29</i>&nbsp;                Spliterators.spliteratorUnknownSize(this.productRepository.findAll().iterator(), Spliterator.ORDERED),</b>
+<b class="fc"><i>30</i>&nbsp;                false).collect(Collectors.toList());</b>
+<i>31</i>&nbsp;    }
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    @Override
+<i>36</i>&nbsp;    public Product save(Product object) {
+<b class="fc"><i>37</i>&nbsp;        return this.productRepository.save(object);</b>
+<i>38</i>&nbsp;    }
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    @Override
+<i>41</i>&nbsp;    public Optional&lt;Product&gt; findOne(Long id) {
+<b class="fc"><i>42</i>&nbsp;        return Optional.of(this.productRepository.findOne(id)) ;</b>
+<i>43</i>&nbsp;    }
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    @Override
+<i>46</i>&nbsp;    public void delete(Long id) {
+<b class="fc"><i>47</i>&nbsp;        this.productRepository.delete(id);</b>
+<i>48</i>&nbsp;
+<b class="fc"><i>49</i>&nbsp;    }</b>
+<i>50</i>&nbsp;}
+<i>51</i>&nbsp;
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-05-28 16:45</div>
+</div>
+</body>
+</html>

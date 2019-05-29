@@ -1,10 +1,10 @@
 package com.simple.crud15.repository;
 
 
-import com.simple.crud15.model.Product;
+import com.simple.crud15.model.Cart;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface Productrepository extends CrudRepository<Product, Long>  {
+@Repository("CartRepository")
+public interface CartRepository extends CrudRepository<Cart, Long>  {
 }

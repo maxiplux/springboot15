@@ -20,10 +20,10 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    private IService productService ;
+    private IService productService;
 
-    @RequestMapping(value="/", method = RequestMethod.GET)
-    public ModelAndView students(){
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView students() {
         List<Product> products = productService.findAll();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("products", products);
@@ -31,8 +31,8 @@ public class ProductController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/product/new", method = RequestMethod.GET)
-    public String create(Model model){
+    @RequestMapping(value = "/product/new", method = RequestMethod.GET)
+    public String create(Model model) {
 
         model.addAttribute("product", new Product());
 
@@ -42,10 +42,9 @@ public class ProductController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String edit(@Valid @ModelAttribute("product") Product product,
-                       BindingResult result, Model model)  {
+                       BindingResult result, Model model) {
 
-        if (result.hasErrors())
-        {
+        if (result.hasErrors()) {
             model.addAttribute("errors", result.getAllErrors());
             return "products/edit";
         }
@@ -53,17 +52,15 @@ public class ProductController {
         return "redirect:/";
     }
 
-    @RequestMapping(value="/product/edit/{id}", method = RequestMethod.GET)
-    public String view(@PathVariable Long id, Model model)
-    {
+    @RequestMapping(value = "/product/edit/{id}", method = RequestMethod.GET)
+    public String view(@PathVariable Long id, Model model) {
 
         model.addAttribute("product", productService.findOne(id).get());
         return "products/edit";
     }
 
-    @RequestMapping(value="/product/delete/{id}", method = RequestMethod.GET)
-    public String delete(@PathVariable Long id, Model model)
-    {
+    @RequestMapping(value = "/product/delete/{id}", method = RequestMethod.GET)
+    public String delete(@PathVariable Long id, Model model) {
         productService.delete(id);
         return "redirect:/";
     }
